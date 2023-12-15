@@ -15,7 +15,7 @@ class EquipoController extends Controller
         try {
             $request->validate(['id_entrenador' => 'required|exists:entrenadores,id']);
             $idEntrenador = $request->id_entrenador;
-            $equipos = Equipo::where('id_entrenadores', $idEntrenador)->paginate(10);
+            $equipos = Equipo::where('id_entrenador', $idEntrenador)->paginate(10);
             return [
                 'status' => 'ok',
                 'equipos' => $equipos

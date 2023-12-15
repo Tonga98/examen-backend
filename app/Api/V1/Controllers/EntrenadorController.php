@@ -11,7 +11,7 @@ class EntrenadorController extends Controller
 {
     public function crear(Request $request)
     {
-        $nombre = $request->nombr;
+        $nombre = $request->nombre;
         try {
             if (empty($nombre)) {
                 throw new Exception("Debe Ingresar el nombre.");

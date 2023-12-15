@@ -8,7 +8,7 @@ class EquipoPokemon extends Model
 {
     public $timestamps = false;
 
-    public $table = "equipos_pokemones";
+    public $table = "equipos-pokemones";
 
-    protected $fillable = ['id_equipos', 'id_pokemones', 'orden'];
+    protected $fillable = ['id_equipo', 'id_pokemon', 'orden'];
 }
