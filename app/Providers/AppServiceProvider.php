@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Pokemon;
-use Illuminate\Support\ServiceProvider;
+use app\Models\Pokemon;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -2,12 +2,11 @@
 
 namespace App\Api\V1\Controllers;
 
+use App\Http\Controllers\Controller;
+use app\Models\Equipo;
 use Exception;
-use App\Equipo;
-use App\EquipoPokemon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
 class EquipoController extends Controller
 {

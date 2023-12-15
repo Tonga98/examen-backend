@@ -1,4 +1,6 @@
 <?php
+
+
 Route::prefix('entrenadores')->group(function () {
     Route::post('crear', 'EntrenadorController@crear');
     Route::get('{id}', 'EntrenadorController@detalle')

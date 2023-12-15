@@ -2,8 +2,8 @@
 
 namespace App\Api\V1\Controllers;
 
-use App\Pokemon;
 use App\Http\Controllers\Controller;
+use app\Models\Pokemon;
 use Exception;
 
 class PokemonController extends Controller

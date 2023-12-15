@@ -2,10 +2,10 @@
 
 namespace App\Api\V1\Controllers;
 
-use Exception;
-use App\Entrenador;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use app\Models\Entrenador;
+use Exception;
+use Illuminate\Http\Request;
 
 class EntrenadorController extends Controller
 {
