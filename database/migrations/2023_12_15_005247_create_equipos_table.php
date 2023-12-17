@@ -20,7 +20,11 @@ class CreateEquiposTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_entrenador')->references('id')->on('entrenadores')
-                ->onDelete('cascade')->onUpdate('cascade');
+                ->onDelete('restrict')->onUpdate('restrict');
+
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
         });
     }
 

@@ -15,8 +15,12 @@ class CreateEntrenadoresTable extends Migration
     {
         Schema::create('entrenadores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre', 40);
+            $table->string('nombre', 100)->nullable()->default(null);
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
         });
     }
 

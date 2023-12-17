@@ -15,9 +15,13 @@ class CreatePokemonesTable extends Migration
     {
         Schema::create('pokemones', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre',30);
-            $table->string('tipo',30);
+            $table->string('nombre',100);
+            $table->string('tipo',500);
             $table->timestamps();
+
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
         });
     }
 

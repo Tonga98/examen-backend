@@ -3,33 +3,60 @@
 namespace App\Api\V1\Controllers;
 
 use App\Http\Controllers\Controller;
-use app\Models\Entrenador;
-use Exception;
-use Illuminate\Http\Request;
+use App\Http\Requests\NewEntrenadorRequest;
+use App\Models\Entrenador;
+use App\Models\Equipo;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 
 class EntrenadorController extends Controller
 {
-    public function crear(Request $request)
+    public function crear(NewEntrenadorRequest $request):JsonResponse
     {
-        $nombre = $request->nombre;
-        try {
-            if (empty($nombre)) {
-                throw new Exception("Debe Ingresar el nombre.");
-            }
+            //Obtener el nombre que ya fue validado
+            $nombre = $request->nombre;
+
+            //Crear entrenador
             $entrenador = Entrenador::create([
                 'nombre' => $nombre
             ]);
-            return [
+
+            return response()->json([
                 'status' => 'ok',
                 'id_entrenador' => $entrenador->id
-            ];
-        } catch (Exception $e) {
-            throw $e;
+            ]);
+    }
+
+    public function detalle(int $entrenador_id): JsonResponse
+    {
+        try {
+            //Obtener el entrenador o lanzar ModelNotFoundException
+            $entrenador = Entrenador::findOrFail($entrenador_id);
+
+            //Obtener los equipos que lidera
+            $equipos = Equipo::where('id_entrenador', $entrenador_id)->get();
+
+            return response()->json([
+                'status' => 'ok',
+                'entrenador' => $entrenador,
+                'equipos' => $equipos
+            ]);
+
+        }catch (ModelNotFoundException $e){
+            return response()->json([
+                'status' => 'Error',
+                'message'=> 'Entrenador no encontrado'
+            ],404);
         }
     }
 
-    public function detalle()
-    {
-        //
+    public function listar(): JsonResponse{
+        //Obtener los entrenadores
+        $entrenadores = Entrenador::all();
+
+        return response()->json([
+            'status' => 'ok',
+            'entrenadores' => $entrenadores
+        ]);
     }
 }

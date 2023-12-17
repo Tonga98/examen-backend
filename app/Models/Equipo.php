@@ -10,7 +10,7 @@ class Equipo extends Model
 
     public $table = "equipos";
 
-    protected $fillable = ['id_entrenadores', 'nombre'];
+    protected $fillable = ['id_entrenador', 'nombre'];
 
     public static function cleanEquipoDetalle($equipoData)
     {

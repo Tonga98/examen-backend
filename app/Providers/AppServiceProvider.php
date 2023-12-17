@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use app\Models\Pokemon;
+use App\Models\Pokemon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 

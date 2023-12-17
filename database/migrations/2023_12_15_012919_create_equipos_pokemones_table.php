@@ -17,11 +17,18 @@ class CreateEquiposPokemonesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_pokemon');
             $table->unsignedBigInteger('id_equipo');
-            $table->integer('orden');
+            $table->tinyInteger('orden');
             $table->timestamps();
 
-            $table->foreign('id_pokemon')->references('id')->on('pokemones');
-            $table->foreign('id_equipo')->references('id')->on('equipos');
+            $table->foreign('id_pokemon')->references('id')->on('pokemones')
+                ->onUpdate('restrict')->onDelete('restrict');
+
+            $table->foreign('id_equipo')->references('id')->on('equipos')
+                ->onUpdate('restrict')->onDelete('restrict');
+
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
         });
     }
 

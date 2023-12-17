@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('entrenadores')->group(function () {
     Route::post('crear', 'EntrenadorController@crear');
-    Route::get('{id}', 'EntrenadorController@detalle')
-        ->where('id', '[0-9]+');
+    Route::get('{id_entrenador}', 'EntrenadorController@detalle')
+        ->where('id_entrenador', '[0-9]+');
+    Route::get('listar', 'EntrenadorController@listar');
 });
 Route::prefix('pokemones')->group(function () {
     Route::get('listar', 'PokemonController@listar');
@@ -20,5 +21,5 @@ Route::prefix('equipos')->group(function () {
         ->where('id', '[0-9]+');
 });
 Route::prefix('app')->group(function () {
-    Route::post('get-pokemones', 'AppController@getPokemones');
+    Route::get('get-pokemones', 'AppController@getPokemones');
 });
